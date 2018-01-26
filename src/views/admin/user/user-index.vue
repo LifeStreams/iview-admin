@@ -14,8 +14,11 @@
                         <Input v-model="searchmodel" icon="search" @on-click="handleSearch1" placeholder="请输入姓名搜索..." style="width: 200px" />
                       </Col>
                       <Col span="6">                      
-                            <Button type="primary" shape="circle" size="small" icon="plus-round" style="float:right;margin-top:5px;margin-left:-5px"></Button>
-                      </Col>
+                            <Button type="primary" @click="addUserModel = true" long shape="circle" size="small" icon="plus-round" style="float:right;margin-top:5px;margin-left:-5px"></Button>
+                            <Modal v-model="addUserModel" title="Add">
+                              <p>123123</p>
+                            </Modal>
+                      </Col>                  
                     </Row>
                     <Row class="margin-top-10 searchable-table-con1">
                         <Table :columns="tableTitle" :data="users" style="width: 100%;"></Table>                        
@@ -31,6 +34,7 @@ export default {
   name: "editable-table",
   data() {
     return {
+      addUserModel: false,
       tableTitle: [
         {
           title: "账号",
@@ -74,17 +78,25 @@ export default {
               },
               on: {
                 "on-change": value => {
-                  let datas = new URLSearchParams()
-                  datas.append('account',params.row.account);
-                  datas.append('lock',value);
-                 util.ajax("lock",{
-                   method:'post',
-                   data:datas
-                 }).then((response) =>{                    
-                    this.$Message.success(params.row.account+'用户'+(value=='1'?'锁定':'解锁')+'成功!');           
-                 }).catch(() => {
-                    this.$Message.error(params.row.account+'用户锁定失败!');      
-                 });
+                  let datas = new URLSearchParams();
+                  datas.append("account", params.row.account);
+                  datas.append("lock", value);
+                  util
+                    .ajax("lock", {
+                      method: "post",
+                      data: datas
+                    })
+                    .then(response => {
+                      this.$Message.success(
+                        params.row.account +
+                          "用户" +
+                          (value == "1" ? "锁定" : "解锁") +
+                          "成功!"
+                      );
+                    })
+                    .catch(() => {
+                      this.$Message.error(params.row.account + "用户锁定失败!");
+                    });
                 }
               }
             });
