@@ -221,6 +221,19 @@ export const appRouter = [
         children: [
             { path: 'index', title: '错误页面', name: 'errorpage_index', component: () => import('@/views/error-page/error-page.vue') }
         ]
+    },
+    {
+        path: '/manager-page',
+        icon: 'android-settings',
+        title: '后台管理',
+        name: 'adminManager',
+        component: Main,
+        children: [
+            { path: 'user-manager', title: '用户管理', name: 'user_manager', component: () => import('@/views/admin/user/user-index.vue') },
+            { path: 'auth-manager', title: '权限管理', name: 'auth_manager', component: () => import('@/views/error-page/error-page.vue') },
+            { path: 'menu-manager', title: '菜单管理', name: 'menu_manager', component: () => import('@/views/error-page/error-page.vue') },
+
+        ]
     }
 ];
 
