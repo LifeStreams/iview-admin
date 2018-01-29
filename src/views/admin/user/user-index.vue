@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import * as table from "./mockdata/usertable.vue";
+import * as table from "./mockdata/usertable.js";
 import util from "@/libs/util.js";
 export default {
   name: "editable-table",
@@ -151,14 +151,15 @@ export default {
   },
   methods: {
     init() {
-      util
-        .ajax("user")
-        .then(response => {
-          this.users = response.data.result;
-        })
-        .catch(() => {
-          this.$Message.error("服务器网络异常");
-        });
+      this.users = table.mockData;
+      // util
+      //   .ajax("user")
+      //   .then(response => {
+      //     this.users = response.data.result;
+      //   })
+      //   .catch(() => {
+      //     this.$Message.error("服务器网络异常");
+      //   });
     },
     handleSearch1() {
       this.$Message.success("搜索");

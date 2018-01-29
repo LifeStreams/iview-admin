@@ -1,4 +1,3 @@
-<script>
 export const userTableTitle = [
     {
         title: '账号',
@@ -94,4 +93,43 @@ export const userTableTitle = [
         }
     }
 ];
-</script>
+
+
+export const mockData = [
+    {
+        name: 'Aresn',
+        account: '17712345678',
+        userName: '二娃',
+        center: '女',
+        email: 'venussc@vip.qq.com',
+        type: 'admin',
+        lock: '1',
+    },
+    {
+        name: 'Lisn',
+        account: '17712345678',
+        userName: '二娃',
+        center: '女',
+        email: 'venussc@vip.qq.com',
+        type: 'admin',
+        lock: '1',
+    },
+    {
+        name: 'Alva',
+        account: '17712345678',
+        userName: '二娃',
+        center: '女',
+        email: 'venussc@vip.qq.com',
+        type: 'admin',
+        lock: '0',
+    },
+    {
+        name: 'Rose',
+        account: '17712345678',
+        userName: '二娃',
+        center: '女',
+        email: 'venussc@vip.qq.com',
+        type: 'admin',
+        lock: '0',
+    },
+];
